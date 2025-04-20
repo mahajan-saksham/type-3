@@ -55,7 +55,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-light/10 text-center text-light/60 -mx-8">
+        <div className="mt-8 pt-8 border-t border-light/10 text-center text-light/60 -mx-4 sm:-mx-6 lg:-mx-8">
           <p>&copy; {new Date().getFullYear()} Type 3. All rights reserved.</p>
         </div>
       </div>

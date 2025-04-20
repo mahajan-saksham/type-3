@@ -366,7 +366,7 @@ export default function Products() {
                   onClick={() => setSelectedProduct(product.id)}
                 >
                   {/* Product Image - Larger, Apple-style */}
-                  <div className="relative h-[300px] overflow-hidden">
+                  <div className="relative h-[150px] md:h-[300px] overflow-hidden">
                     <img
                       src={product.image_url}
                       alt={product.name}
