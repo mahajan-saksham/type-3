@@ -128,7 +128,7 @@ export function Navbar() {
                 radius="xl"
                 className="ml-2"
               >
-                Get Started
+                Sign In
               </Button>
             )}
           </div>

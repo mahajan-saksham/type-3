@@ -1019,7 +1019,7 @@ function Home() {
               >
                 {/* Animated background effect removed */}
                 <span className="relative z-10 flex items-center justify-center">
-                  Get Started 
+                  Sign In 
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
