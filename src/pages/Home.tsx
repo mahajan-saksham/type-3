@@ -211,7 +211,7 @@ function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section: Rooftop Solar */}
-      <section className="relative min-h-[80vh] flex items-center pb-2">
+      <section className="relative min-h-[80vh] flex items-center py-8 md:py-12 lg:py-16">
         {/* Video Background with Enhanced Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Enhanced gradient overlay for better text contrast */}
@@ -277,59 +277,89 @@ function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 container mx-auto px-6 mt-20 mb-20 md:mt-8 md:mb-8 py-8 md:py-12"
+          className="relative z-10 container mx-auto px-6 max-w-6xl py-8 md:py-12"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-[20px] md:mt-[40px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {/* Left side content */}
-                <div className="text-left md:text-left">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4 md:mb-6 font-heading leading-tight">
-                    Turn Your Roof Into a Power Station
+                {/* Left side content - Enhanced for mobile */}
+                <div className="text-left">
+                  {/* Mobile-optimized heading with better line height and letter spacing */}
+                  <h1 className="text-[3.6rem] sm:text-[3.36rem] md:text-[3.6rem] lg:text-6xl font-extrabold text-primary mb-3 md:mb-6 font-heading leading-[1.15] tracking-tight mt-[5vh] sm:mt-0">
+                    Turn Your Roof<br className="md:hidden" /> Into a<br className="md:hidden" /> <span className="relative inline-block">
+                      Power Station
+                    </span>
                   </h1>
-                  <p className="text-base sm:text-lg md:text-xl text-light/80 mb-8 leading-relaxed">
-                    Start generating your own electricity and slash your power bills by up to 90% with our premium solar solutions.
+                  
+                  {/* Enhanced description with better spacing and line height */}
+                  <p className="text-lg sm:text-lg md:text-xl text-light/90 mb-7 leading-relaxed max-w-[95%]">
+                    Start generating your own electricity and slash your power bills by up to <span className="text-primary font-semibold">90%</span> with our premium solar solutions.
                   </p>
               
-                  {/* Installation highlights */}
-                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 mb-6">
-                    <div className="flex items-center gap-4 p-4 rounded-lg">
-                      <div className="bg-primary/10 p-2 rounded-full">
-                        <CircleDollarSign className="h-6 w-6 text-primary" />
+                  {/* Installation highlights - Enhanced for mobile */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    {/* Mobile-optimized feature cards with hover effects */}
+                    <motion.div 
+                      whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                      className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                        <CircleDollarSign className="h-6 w-6" />
                       </div>
-                      <div className="text-sm font-bold text-light w-40">Save up to 90% on electricity bills</div>
-                    </div>
+                      <div className="text-base font-medium text-light/90">Save up to 90% on electricity bills</div>
+                    </motion.div>
 
-                    <div className="flex items-center gap-4 p-4 rounded-lg">
-                      <div className="bg-primary/10 p-2 rounded-full">
-                        <Shield className="h-6 w-6 text-primary" />
+                    <motion.div 
+                      whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                      className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                        <Shield className="h-6 w-6" />
                       </div>
-                      <div className="text-sm font-bold text-light w-40">Government subsidies available</div>
-                    </div>
+                      <div className="text-base font-medium text-light/90">Government subsidies available</div>
+                    </motion.div>
 
-                    <div className="flex items-center gap-4 p-4 rounded-lg">
-                      <div className="bg-primary/10 p-2 rounded-full">
-                        <Clock className="h-6 w-6 text-primary" />
+                    <motion.div 
+                      whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                      className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                        <Clock className="h-6 w-6" />
                       </div>
-                      <div className="text-sm font-bold text-light w-40">25+ years system lifespan</div>
-                    </div>
+                      <div className="text-base font-medium text-light/90">25+ years system lifespan</div>
+                    </motion.div>
 
-                    <div className="flex items-center gap-4 p-4 rounded-lg">
-                      <div className="bg-primary/10 p-2 rounded-full">
-                        <Sparkles className="h-6 w-6 text-primary" />
+                    <motion.div 
+                      whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                      className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                        <Sparkles className="h-6 w-6" />
                       </div>
-                      <div className="text-sm font-bold text-light w-40">Premium quality panels</div>
-                    </div>
+                      <div className="text-base font-medium text-light/90">Premium quality panels</div>
+                    </motion.div>
                   </div>
                   
-                  <div className="flex flex-wrap justify-start gap-4 mb-6">
-                    <Button to="/products" variant="primary" size="lg">
-                      Explore Products
-                    </Button>
+                  {/* Enhanced CTA button with animation */}
+                  <div className="flex justify-center sm:justify-start">
+                    <motion.div
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full sm:w-auto"
+                    >
+                      <Button 
+                        to="/products" 
+                        variant="primary" 
+                        size="lg" 
+                        className="w-full sm:w-auto shadow-lg shadow-primary/20 font-medium text-base"
+                      >
+                        Explore Products
+                      </Button>
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>
@@ -358,8 +388,8 @@ function Home() {
                   </div>
                   
                   {/* Inner shadow overlay */}
-                  <div className="absolute inset-0 rounded-2xl bg-dark/30 z-10"></div>
-
+                  <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/70 to-dark" />
+                  
                   {/* Dynamic image carousel */}
                   <div className="absolute inset-0 z-0">
                     <ImageCarousel />
@@ -378,14 +408,13 @@ function Home() {
       </section>
 
       {/* Core Products - Rooftop Solar Only */}
-      <section className="pt-6 pb-16 relative bg-gradient-to-b from-dark to-dark-900 overflow-hidden">
-        {/* Decorative elements */}
+      <section className="relative bg-gradient-to-b from-dark-900 to-dark py-16 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute top-0 left-0 w-full h-full" style={{background: 'radial-gradient(circle at 15% 50%, rgba(204, 255, 0, 0.5) 0%, rgba(0, 0, 0, 0) 45%)'}} />
           <div className="absolute top-0 right-0 w-full h-full" style={{background: 'radial-gradient(circle at 85% 30%, rgba(0, 225, 255, 0.5) 0%, rgba(0, 0, 0, 0) 45%)'}} />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 sm:px-6 max-w-6xl relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Rooftop Solar Card */}
             <motion.div 
@@ -401,8 +430,8 @@ function Home() {
                   <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 text-primary">
                     <HomeIcon className="h-6 w-6" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-medium text-light/80">Solar Power</h3>
+                  <div className="space-y-0.5">
+                    <h3 className="text-xl font-medium text-light/80 mb-0.5">Solar Power</h3>
                     <p className="text-sm text-light/60">Home Energy Solution</p>
                   </div>
                 </div>
@@ -421,7 +450,7 @@ function Home() {
                       whileHover={{ x: 10 }}
                     >
                       <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
-                        <CircleDollarSign className="h-5 w-5" />
+                        <CircleDollarSign className="h-6 w-6" />
                       </div>
                       <span>Save up to ₹45,000/year</span>
                     </motion.li>
@@ -430,7 +459,7 @@ function Home() {
                       whileHover={{ x: 10 }}
                     >
                       <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
-                        <Shield className="h-5 w-5" />
+                        <Shield className="h-6 w-6" />
                       </div>
                       <span>₹78,000 subsidy available</span>
                     </motion.li>
@@ -494,8 +523,8 @@ function Home() {
                   <div className="text-primary flex justify-center items-center bg-white/5 p-3 rounded-lg mr-4">
                     <Zap className="h-6 w-6" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-light">Compare & Save</h3>
+                  <div className="space-y-0.5">
+                    <h3 className="text-xl font-bold text-light mb-0.5">Compare & Save</h3>
                     <p className="text-light/60 text-sm">See your potential savings with solar</p>
                   </div>
                 </div>
@@ -547,7 +576,7 @@ function Home() {
       </section>
 
       {/* Enhanced Calculator Section */}
-      <section className="py-24 lg:py-36 relative" id="calculator">
+      <section className="py-16 relative" id="calculator">
         {/* Decorative background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-dark opacity-95" />
@@ -559,7 +588,7 @@ function Home() {
           <div className="absolute right-0 bottom-1/4 w-60 h-60 rounded-full bg-primary/10 filter blur-3xl opacity-20 animate-pulse" style={{animationDuration: '20s', animationDelay: '2s'}} />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-6 sm:px-6 max-w-6xl relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -567,19 +596,9 @@ function Home() {
             viewport={{ once: true }}
             className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="inline-block mb-4 px-4 py-1.5 bg-primary/10 rounded-full border border-primary/20"
-            >
-              <span className="text-primary text-sm font-medium">Interactive Tool</span>
-            </motion.div>
+            {/* Interactive Tool badge removed */}
             
-            <h2 className="text-3xl lg:text-5xl font-bold text-light mb-4">
-              Calculate Your Solar <span className="text-primary">Savings</span>
-            </h2>
+            <h2 className="text-[calc(1.2*1.1*1.25rem)] md:text-[calc(1.2*1.1*1.25rem)] lg:text-[calc(1.1*2.5rem)] font-bold text-light mb-4">Calculate Your Solar <span className="text-primary">Savings</span></h2>
             <p className="text-lg text-light/70 max-w-2xl mx-auto">
               See how much you can save with rooftop solar energy for your home or business.
               Adjust the system size to match your needs.
@@ -612,8 +631,8 @@ function Home() {
                     <div className="text-primary flex justify-center items-center bg-white/5 p-3 rounded-lg mr-4">
                       <Zap className="h-6 w-6" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-light">System Specifications</h3>
+                    <div className="space-y-0.5">
+                      <h3 className="text-xl font-bold text-light mb-0.5">System Specifications</h3>
                       <p className="text-light/60 text-sm">Customize your solar system size</p>
                     </div>
                   </div>
@@ -644,38 +663,30 @@ function Home() {
                           >
                             <span className="text-lg font-medium">{size}</span>
                             <span className="text-xs">kW</span>
-                            {roofSize === size && (
-                              <motion.div 
-                                layoutId="selectedSize"
-                                className="absolute -bottom-1 left-0 right-0 mx-auto w-8 h-1 bg-primary rounded-full"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.3 }}
-                              />
-                            )}
+                            {/* Motion indicator removed */}
                           </button>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 rounded-lg p-4 mt-auto">
-                      <div className="flex items-center gap-3">
-                        <div className="text-primary flex justify-center items-center bg-white/5 p-2 rounded-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <div className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 rounded-lg p-5 md:p-6 mt-auto shadow-lg shadow-dark/20">
+                      <div className="flex items-center gap-4">
+                        <div className="text-primary flex justify-center items-center bg-primary/10 p-3 rounded-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                           </svg>
                         </div>
-                        <div className="space-y-0.5">
-                          <div className="text-sm text-light/60">Average roof area needed:</div>
+                        <div className="space-y-1">
+                          <div className="text-sm font-medium text-light/70">Average roof area needed:</div>
                           <div>
                             <motion.span 
                               key={roiValues.area} // Force animation on value change
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ duration: 0.3 }}
-                              className="font-medium text-primary text-lg"
+                              className="font-bold text-primary text-xl"
                             >
-                              {roiValues.area} sq.ft
+                              ~{roiValues.area} sq.ft
                             </motion.span>
                           </div>
                         </div>
@@ -702,8 +713,8 @@ function Home() {
                     <div className="text-primary flex justify-center items-center bg-white/5 p-3 rounded-lg mr-4">
                       <CircleDollarSign className="h-6 w-6" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-light">Financial Benefits</h3>
+                    <div className="space-y-0.5">
+                      <h3 className="text-xl font-bold text-light mb-0.5">Financial Benefits</h3>
                       <p className="text-light/60 text-sm">Estimated savings with solar power</p>
                     </div>
                   </div>
@@ -751,7 +762,7 @@ function Home() {
                       transition={{ duration: 0.5, delay: 0.3 }}
                       className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 p-4 rounded-lg mt-auto"
                     >
-                      <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-4">
                         <span className="text-light/80 text-sm">System Payback Period</span>
                         <span className="text-xl font-bold text-primary">{roiValues.payback} years</span>
                       </div>
@@ -846,56 +857,63 @@ function Home() {
                                 <p className="text-light/60 text-lg mt-2">{recommendedProduct.description}</p>
                               </div>
                               
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-6">
-                                <div className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 rounded-lg p-4">
-                                  <div className="text-primary flex justify-center items-center mb-4">
-                                    <CircleDollarSign className="h-8 w-8" />
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-6 mb-8">
+                                <motion.div 
+                                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                                  className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                                >
+                                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                    <CircleDollarSign className="h-6 w-6" />
                                   </div>
-                                  <div className="text-center">
-                                    <div className="text-lg font-medium text-light">Price</div>
-                                    <div className="text-2xl font-bold text-primary mt-1">
+                                  <div>
+                                    <div className="text-base font-medium text-light/90">Price</div>
+                                    <div className="text-xl font-bold text-primary">
                                       ₹{recommendedProduct.price.toLocaleString()}
                                     </div>
-                                    <div className="text-sm text-light/50 mt-1">
-                                      Subsidy: ₹{recommendedProduct.subsidy_amount.toLocaleString()}
-                                    </div>
                                   </div>
-                                </div>
+                                </motion.div>
                                 
-                                <div className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 rounded-lg p-4">
-                                  <div className="text-primary flex justify-center items-center mb-4">
-                                    <Shield className="h-8 w-8" />
+                                <motion.div 
+                                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                                  className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                                >
+                                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                    <Shield className="h-6 w-6" />
                                   </div>
-                                  <div className="text-center">
-                                    <div className="text-lg font-medium text-light">Warranty</div>
-                                    <div className="text-2xl font-bold text-primary mt-1">
+                                  <div>
+                                    <div className="text-base font-medium text-light/90">Warranty</div>
+                                    <div className="text-xl font-bold text-primary">
                                       {recommendedProduct.warranty_years} Years
                                     </div>
-                                    <div className="text-sm text-light/50 mt-1">Panel Performance</div>
                                   </div>
-                                </div>
+                                </motion.div>
                                 
-                                <div className="transition-all duration-300 bg-white/5 border border-white/10 hover:border-primary/20 rounded-lg p-4">
-                                  <div className="text-primary flex justify-center items-center mb-4">
-                                    <Clock className="h-8 w-8" />
+                                <motion.div 
+                                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                                  className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
+                                >
+                                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
+                                    <Clock className="h-6 w-6" />
                                   </div>
-                                  <div className="text-center">
-                                    <div className="text-lg font-medium text-light">Installation</div>
-                                    <div className="text-2xl font-bold text-primary mt-1">
+                                  <div>
+                                    <div className="text-base font-medium text-light/90">Installation</div>
+                                    <div className="text-xl font-bold text-primary">
                                       {recommendedProduct.installation_days} Days
                                     </div>
-                                    <div className="text-sm text-light/50 mt-1">Professional Setup</div>
                                   </div>
-                                </div>
+                                </motion.div>
                               </div>
                             </div>
                             
-                            <Link 
-                              to={`/products/${recommendedProduct.id}`} 
-                              className="inline-flex items-center justify-center w-full mt-6 font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-dark hover:bg-primary-hover active:bg-primary-active h-14 px-8 text-lg rounded-lg relative overflow-hidden group"
+                            <Button
+                              to="/products"
+                              variant="primary"
+                              size="lg"
+                              radius="lg"
+                              className="mt-4 shadow-md"
                             >
-                              <span className="relative z-10 flex items-center justify-center">
-                                View Details 
+                              <span className="flex items-center justify-center">
+                                View Details
                                 <motion.div
                                   animate={{ x: [0, 5, 0] }}
                                   transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
@@ -905,7 +923,7 @@ function Home() {
                                 </motion.div>
                               </span>
                               <span className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                            </Link>
+                            </Button>
                           </>
                         ) : (
                           <div className="flex flex-col items-center justify-center h-full py-10">
@@ -929,7 +947,7 @@ function Home() {
       </section>
 
       {/* Enhanced Call-to-Action Section */}
-      <section className="py-24 lg:py-32 relative bg-gradient-to-br from-dark-800 to-dark">
+      <section className="py-16 bg-dark-900 relative overflow-hidden">
         {/* Enhanced decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div 
@@ -969,7 +987,7 @@ function Home() {
           }}></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 sm:px-6 max-w-6xl relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -978,17 +996,10 @@ function Home() {
             className="max-w-3xl mx-auto text-center space-y-8 p-6 md:p-8"
           >
             {/* Enhanced title with animated highlight */}
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-light">
+            <h2 className="text-[calc(1.2*1.1*1.25rem)] md:text-[calc(1.2*1.1*1.25rem)] lg:text-[calc(1.1*2.5rem)] font-bold text-light mb-4">
               Ready to
               <span className="relative mx-3">
-                <span className="relative z-10 bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text">Go Solar</span>
-                <motion.span 
-                  className="absolute -bottom-1 left-0 w-full h-2 bg-primary/20 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  viewport={{ once: true }}
-                />
+                <span className="relative z-10 bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text no-underline">Go Solar</span>
               </span>
               ?
             </h2>
@@ -998,16 +1009,15 @@ function Home() {
             </p>
 
             {/* Enhanced CTA buttons */}
-            <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <Link 
-                to="/products" 
-                className="inline-flex items-center justify-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-dark hover:bg-primary-hover active:bg-primary-active h-14 px-8 text-lg rounded-xl relative overflow-hidden group shadow-md"
+            <div className="grid grid-cols-1 sm:flex sm:flex-wrap justify-center gap-4 mt-10 max-w-md mx-auto sm:max-w-none">
+              <Button
+                to="/products"
+                variant="primary"
+                size="lg"
+                radius="lg"
+                className="shadow-md w-full sm:w-auto"
               >
-                <motion.span 
-                  className="absolute inset-0 bg-white/20 translate-y-full"
-                  animate={{ translateY: ["100%", "-100%"] }}
-                  transition={{ duration: 5, repeat: Infinity, repeatType: "loop", ease: "linear" }}
-                />
+                {/* Animated background effect removed */}
                 <span className="relative z-10 flex items-center justify-center">
                   Get Started 
                   <motion.div
@@ -1018,13 +1028,14 @@ function Home() {
                     <ArrowRight className="h-5 w-5" />
                   </motion.div>
                 </span>
-              </Link>
+              </Button>
               
-              <motion.button 
+              <Button
                 onClick={() => setIsSiteVisitModalOpen(true)}
-                className="inline-flex items-center justify-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-white/10 hover:border-primary/20 text-primary hover:bg-primary/10 active:bg-primary/15 h-14 px-8 text-lg rounded-xl relative overflow-hidden group shadow-md"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                variant="ghost"
+                size="lg"
+                radius="lg"
+                className="border border-white/10 hover:border-primary/20 text-primary hover:bg-primary/10 active:bg-primary/15 shadow-md w-full sm:w-auto"
                 aria-haspopup="dialog"
               >
                 <span className="relative z-10 flex items-center">
@@ -1032,7 +1043,7 @@ function Home() {
                   Book Consultation
                 </span>
                 <span className="absolute inset-0 bg-primary/5 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300" />
-              </motion.button>
+              </Button>
             </div>
 
             {/* Social proof/trust indicators */}
@@ -1041,7 +1052,7 @@ function Home() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
               viewport={{ once: true }}
-              className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 mt-14 pt-6 border-t border-white/5"
+              className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 mt-14 pt-6"
             >
               <div className="flex items-center gap-2">
                 <Shield className="h-5 w-5 text-primary" />

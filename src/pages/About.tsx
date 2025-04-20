@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
+import { ContactAndAbout } from '../components/ContactAndAbout';
 import { 
   Rocket, 
   Globe2, 
@@ -279,6 +280,9 @@ function About() {
           </div>
         </div>
       </section>
+
+      {/* Contact and About Section */}
+      <ContactAndAbout />
     </div>
   );
 }
