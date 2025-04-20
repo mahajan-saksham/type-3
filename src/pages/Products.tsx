@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Sun, 
@@ -22,7 +22,9 @@ import {
   Lightbulb,
   Droplet,
   PanelTop,
-  Blocks
+  Blocks,
+  Wrench,
+  Wallet
 } from 'lucide-react';
 
 import { Button } from '../components/Button';
@@ -163,7 +165,7 @@ export default function Products() {
     setSelectedProduct(productId);
   };
 
-  const handleBuyClick = (product: Product) => {
+  const handleBookClick = (product: Product) => {
     setSiteVisitProduct({
       sku: product.sku,
       name: product.name,
@@ -187,77 +189,169 @@ export default function Products() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-2">
-            {[
-              { id: 'on-grid', name: 'On-Grid Systems', icon: <Zap size={16} /> },
-              { id: 'off-grid', name: 'Off-Grid Systems', icon: <Power size={16} /> },
-              { id: 'hybrid', name: 'Hybrid Systems', icon: <CircuitBoard size={16} /> },
-              { id: 'fencing', name: 'Fencing Systems', icon: <Fence size={16} /> },
-              { id: 'lighting', name: 'Street Lights', icon: <Lightbulb size={16} /> },
-              { id: 'water_heating', name: 'Water Heaters', icon: <Droplet size={16} /> },
-              { id: 'water_pumping', name: 'Water Pumps', icon: <PanelTop size={16} /> },
-              { id: 'rock_lighting', name: 'Rock Lights', icon: <Blocks size={16} /> }
-            ].map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id as CategoryFilter)}
-                className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${
-                  selectedCategory === category.id 
-                    ? 'bg-primary text-dark font-medium' 
-                    : 'bg-dark-800/50 text-light/70 hover:bg-dark-700/50'
-                }`}
-              >
-                <span className="flex items-center gap-1.5">
-                  <span className="">{category.icon}</span>
-                  <span>{category.name}</span>
-                </span>
-              </button>
-            ))}
+        <div className="container mx-auto px-4 max-w-6xl overflow-hidden">
+          <div className="relative">
+            {/* Scrollable container with custom scrollbar */}
+            <div className="overflow-x-auto lg:overflow-visible hide-scrollbar pb-4">
+              <div className="flex gap-2 md:gap-3 px-4 py-2 min-w-max lg:min-w-0 flex-nowrap lg:flex-wrap lg:justify-center lg:max-w-5xl mx-auto">
+                {[
+                  { id: 'on-grid', name: 'On-Grid Systems', icon: <Zap size={24} /> },
+                  { id: 'off-grid', name: 'Off-Grid Systems', icon: <Power size={24} /> },
+                  { id: 'hybrid', name: 'Hybrid Systems', icon: <CircuitBoard size={24} /> },
+                  { id: 'fencing', name: 'Fencing Systems', icon: <Fence size={24} /> },
+                  { id: 'lighting', name: 'Street Lights', icon: <Lightbulb size={24} /> },
+                  { id: 'water_heating', name: 'Water Heaters', icon: <Droplet size={24} /> },
+                  { id: 'water_pumping', name: 'Water Pumps', icon: <PanelTop size={24} /> },
+                  { id: 'rock_lighting', name: 'Rock Lights', icon: <Blocks size={24} /> }
+                ].map((category) => (
+                  <motion.div
+                    key={category.id}
+                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedCategory(category.id as CategoryFilter)}
+                    className={`flex flex-col items-center justify-center w-24 h-24 sm:w-[100px] sm:h-[100px] rounded-lg cursor-pointer transition-all duration-300 ${
+                      selectedCategory === category.id 
+                        ? 'bg-primary text-dark border-2 border-primary' 
+                        : 'bg-dark-900/50 text-light/80 border border-white/10 hover:border-primary/30'
+                    }`}
+                  >
+                    <div className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full mb-1.5 ${
+                      selectedCategory === category.id 
+                        ? 'bg-dark/10' 
+                        : 'bg-primary/10'
+                    }`}>
+                      <span className={selectedCategory === category.id ? 'text-dark' : 'text-primary'}>
+                        {React.cloneElement(category.icon as React.ReactElement, {size: 20})}
+                      </span>
+                    </div>
+                    <span className="text-center text-xs sm:text-sm font-medium px-2 leading-tight">{category.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Fade effect on edges */}
+            {/* Left gradient removed */}
+            <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-dark to-transparent pointer-events-none"></div>
           </div>
         </div>
       </motion.section>
       
       {/* Products Grid - Apple Style */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          {/* Section Heading */}
+      <section className="pt-10 pb-20">
+        <div className="container mx-auto px-6 max-w-6xl">
+          {/* Enhanced Section Heading with Illustration */}
           <motion.div 
-            className="mb-16 text-center"
+            className="mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
-                {selectedCategory === 'all' ? 'All Products' : 
-                 `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}${['panels', 'inverters', 'batteries', 'mounting', 'accessories', 'packages'].includes(selectedCategory) ? '' : ' Systems'}`}
-              </span>
-            </h2>
-            <p className="text-light/70 max-w-2xl mx-auto">
-              {selectedCategory === 'all' 
-                ? 'Browse our complete collection of premium solar systems tailored for various needs.'
-                : selectedCategory === 'on-grid'
-                  ? 'Specially designed for homes, maximizing energy production with minimal roof space.'
-                  : selectedCategory === 'off-grid'
-                    ? 'High-capacity systems for businesses looking to reduce operational costs.'
-                    : selectedCategory === 'hybrid'
-                      ? 'Industrial-grade solar systems for large-scale facilities and manufacturing plants.'
-                      : selectedCategory === 'fencing'
+            {/* Clean card with minimal styling inspired by Home page */}
+            <div className="transition-all duration-300 border border-white/10 hover:border-primary/20 rounded-xl shadow-md p-6 md:p-8 relative z-10 w-full max-w-5xl mx-auto bg-dark-900/50 backdrop-blur-sm group hover:shadow-xl hover:shadow-primary/5">
+              {/* Subtle background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-500 rounded-xl"></div>
+              
+              {/* Content Section */}
+              <div className="space-y-4 relative z-10 text-left">
+                {/* Title and description */}
+                <div className="space-y-2">
+                  <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+                    {selectedCategory === 'all' ? 'All Products' : 
+                     `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}${['panels', 'inverters', 'batteries', 'mounting', 'accessories', 'packages'].includes(selectedCategory) ? '' : ' Systems'}`}
+                  </h2>
+                  <p className="text-light/70">
+                    {selectedCategory === 'all' 
+                      ? 'Browse our complete collection of premium solar systems tailored for various needs.'
+                      : selectedCategory === 'on-grid'
                         ? 'Specially designed for homes, maximizing energy production with minimal roof space.'
-                        : selectedCategory === 'lighting'
+                        : selectedCategory === 'off-grid'
                           ? 'High-capacity systems for businesses looking to reduce operational costs.'
-                          : selectedCategory === 'water_heating'
+                          : selectedCategory === 'hybrid'
                             ? 'Industrial-grade solar systems for large-scale facilities and manufacturing plants.'
-                            : selectedCategory === 'water_pumping'
+                            : selectedCategory === 'fencing'
                               ? 'Specially designed for homes, maximizing energy production with minimal roof space.'
-                              : 'High-capacity systems for businesses looking to reduce operational costs.'}
-            </p>
+                              : selectedCategory === 'lighting'
+                                ? 'High-capacity systems for businesses looking to reduce operational costs.'
+                                : selectedCategory === 'water_heating'
+                                  ? 'Industrial-grade solar systems for large-scale facilities and manufacturing plants.'
+                                  : selectedCategory === 'water_pumping'
+                                    ? 'Specially designed for homes, maximizing energy production with minimal roof space.'
+                                    : 'High-capacity systems for businesses looking to reduce operational costs.'}
+                  </p>
+                </div>
+                
+                {/* Key features as horizontal tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {selectedCategory === 'on-grid' && (
+                    <>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Grid-tied
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        No batteries
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Net metering
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/10 border border-primary/20 text-light">
+                        <ArrowUpRight className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        40% subsidy
+                      </span>
+                    </>
+                  )}
+                  {selectedCategory === 'off-grid' && (
+                    <>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Independent
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Battery backup
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Remote areas
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/10 border border-primary/20 text-light">
+                        <ArrowUpRight className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        25% subsidy
+                      </span>
+                    </>
+                  )}
+                  {selectedCategory === 'hybrid' && (
+                    <>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Grid + Battery
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Power backup
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 border border-white/10 text-light/80">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        Smart control
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/10 border border-primary/20 text-light">
+                        <ArrowUpRight className="h-3.5 w-3.5 text-primary mr-1.5" />
+                        30% subsidy
+                      </span>
+                    </>
+                  )}
+                  {/* Additional categories would follow the same pattern */}
+                </div>
+              </div>
+            </div>
           </motion.div>
           
           {/* Apple-style Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-20 max-w-5xl mx-auto">
             {sortedProducts.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -267,7 +361,10 @@ export default function Products() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="h-full"
               >
-                <div className="group h-full flex flex-col bg-dark-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+                <div 
+                  className="group h-full flex flex-col bg-dark-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 cursor-pointer" 
+                  onClick={() => setSelectedProduct(product.id)}
+                >
                   {/* Product Image - Larger, Apple-style */}
                   <div className="relative h-[300px] overflow-hidden">
                     <img
@@ -284,44 +381,68 @@ export default function Products() {
                   {/* Product Info - Clean, Minimal */}
                   <div className="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-light group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-[1.15rem] font-bold mb-4 text-light group-hover:text-primary transition-colors duration-300">
                         {product.name}
                       </h3>
-                      <p className="text-light/60 text-sm mb-6 line-clamp-2">
-                        {product.description}
-                      </p>
+
                       
                       {/* Key Specs - Apple Style Line Design */}
                       <div className="space-y-3 mb-6">
                         <div className="flex items-center gap-2">
                           <Sun size={16} className="text-primary/80" />
-                          <div className="flex flex-1 justify-between border-b border-white/5 pb-1">
-                            <span className="text-light/80 text-sm">Generation</span>
-                            <span className="text-sm font-medium">{product.generation || 'N/A'}</span>
+                          <div className="flex flex-1 justify-between">
+                            <span className="text-light/80 text-sm">Annual Energy</span>
+                            <span className="text-sm font-medium">{product.capacity_kw * 1400} kWh</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Battery size={16} className="text-primary/80" />
-                          <div className="flex flex-1 justify-between border-b border-white/5 pb-1">
-                            <span className="text-light/80 text-sm">Savings</span>
-                            <span className="text-sm font-medium">₹{product.monthly_savings || 'N/A'}/mo</span>
+                          <Wallet size={16} className="text-primary/80" />
+                          <div className="flex flex-1 justify-between">
+                            <span className="text-light/80 text-sm">Annual Savings</span>
+                            <span className="text-sm font-medium">₹{product.monthly_savings * 12}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock size={16} className="text-primary/80" />
+                          <div className="flex flex-1 justify-between">
+                            <span className="text-light/80 text-sm">Payback Period</span>
+                            <span className="text-sm font-medium">{Math.round(product.price / (product.monthly_savings * 12))} years</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Wrench size={16} className="text-primary/80" />
+                          <div className="flex flex-1 justify-between">
+                            <span className="text-light/80 text-sm">Installation</span>
+                            <span className="text-sm font-medium">{product.installation_time || '7-10'} days</span>
                           </div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="mt-auto pt-4 flex items-end justify-between border-t border-white/5">
-                      <div>
-                        <p className="text-xs text-light/50">From</p>
-                        <p className="text-2xl font-medium text-light">₹{(product.price - (product.subsidy_amount || 0)).toLocaleString()}</p>
+                    <div className="mt-auto pt-4 flex items-center justify-between border-t border-white/5">
+                      <div className="flex flex-col">
+                        <div className="flex items-baseline gap-1">
+                          <p className="text-base line-through text-light/40">₹{product.price.toLocaleString()}</p>
+                          <span className="text-xs font-medium text-primary">
+                            {Math.round((product.subsidy_amount / product.price) * 100)}% off
+                          </span>
+                        </div>
+                        <p className="text-2xl font-medium text-light">
+                          ₹{(product.price - (product.subsidy_amount || 0)).toLocaleString()}
+                        </p>
                       </div>
-                      <button 
-                        onClick={() => handleBuyClick(product)}
-                        className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors duration-300 group/btn bg-primary/5 hover:bg-primary/10 px-3 py-2 rounded-full"
+                      <Button 
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent card click event from firing
+                          handleBookClick(product);
+                        }}
+                        variant="primary"
+                        size="md"
+                        radius="full"
                       >
-                        <span>Buy</span>
-                        <ArrowRight size={16} className="transform group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </button>
+                        Book
+                        <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -375,7 +496,7 @@ export default function Products() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
-              className="container mx-auto px-6 py-24"
+              className="container mx-auto px-6 max-w-6xl py-24"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Content - Apple Aesthetic */}
@@ -491,29 +612,30 @@ export default function Products() {
                         {/* Price and CTA */}
                         <div className="mt-auto pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
                           <div>
-                            <p className="text-xs text-light/50 mb-1">From</p>
+
                             <div className="flex items-baseline gap-2">
-                              <p className="text-3xl font-bold text-light">₹{(products.find(p => p.id === selectedProduct)?.price - (products.find(p => p.id === selectedProduct)?.subsidy_amount || 0)).toLocaleString()}</p>
-                              <p className="text-light/50 line-through">₹{products.find(p => p.id === selectedProduct)?.price.toLocaleString()}</p>
+                              <p className="text-lg line-through text-light/40">₹{products.find(p => p.id === selectedProduct)?.price.toLocaleString()}</p>
+                              <span className="text-sm font-medium text-primary">
+                                {Math.round((products.find(p => p.id === selectedProduct)?.subsidy_amount || 0) / (products.find(p => p.id === selectedProduct)?.price || 1) * 100)}% off
+                              </span>
                             </div>
+                            <p className="text-3xl font-bold text-light">
+                              ₹{(products.find(p => p.id === selectedProduct)?.price - (products.find(p => p.id === selectedProduct)?.subsidy_amount || 0)).toLocaleString()}
+                            </p>
                             <p className="text-sm text-light/60">Price after government subsidy</p>
                           </div>
                           
                           <Button 
                             variant="primary" 
-                            size="xl" 
+                            size="lg" 
                             radius="full" 
-                            className="group relative overflow-hidden px-8 py-4 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
                             onClick={() => {
                               const prod = products.find(p => p.id === selectedProduct);
-                              if (prod) handleBuyClick(prod);
+                              if (prod) handleBookClick(prod);
                             }}
                           >
-                            <span className="relative z-10 flex items-center gap-2">
-                              Buy
-                              <ArrowRight size={18} className="transform transition-transform duration-300 group-hover:translate-x-1" />
-                            </span>
-                            <span className="absolute inset-0 bg-gradient-to-r from-primary to-primary/90 transition-transform duration-500 group-hover:scale-105"></span>
+                            Book
+                            <ArrowRight size={18} className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1" />
                           </Button>
                         </div>
                       </div>
