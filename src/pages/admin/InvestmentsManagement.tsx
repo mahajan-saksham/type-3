@@ -11,7 +11,7 @@ import {
   AlertTriangle,
   CheckCircle,
   XCircle,
-  DollarSign,
+  IndianRupee,
   Zap,
   ChevronDown,
   X,
@@ -312,7 +312,7 @@ const InvestmentsManagement: React.FC = () => {
           </div>
         ) : filteredInvestments.length === 0 ? (
           <div className="text-center py-12 text-light/60">
-            <DollarSign className="h-12 w-12 mx-auto mb-4 opacity-30" />
+            <IndianRupee className="h-12 w-12 mx-auto mb-4 opacity-30" />
             <p>No investments match your filters</p>
           </div>
         ) : (

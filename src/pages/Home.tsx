@@ -9,7 +9,7 @@ import {
   Home as HomeIcon,
   Sun,
   Zap,
-  CircleDollarSign,
+  IndianRupee,
   Shield,
   Users,
   Car,
@@ -308,7 +308,7 @@ function Home() {
                       className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
                     >
                       <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                        <CircleDollarSign className="h-6 w-6" />
+                        <IndianRupee className="h-6 w-6" />
                       </div>
                       <div className="text-base font-medium text-light/90">Save up to 90% on electricity bills</div>
                     </motion.div>
@@ -450,7 +450,7 @@ function Home() {
                       whileHover={{ x: 10 }}
                     >
                       <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
-                        <CircleDollarSign className="h-6 w-6" />
+                        <IndianRupee className="h-6 w-6" />
                       </div>
                       <span>Save up to ₹45,000/year</span>
                     </motion.li>
@@ -711,7 +711,7 @@ function Home() {
                 <div className="transition-all duration-300 border border-white/10 hover:border-primary/20 rounded-xl shadow-md p-6 md:p-8 relative z-10 flex flex-col flex-1 group-hover:shadow-xl">
                   <div className="flex items-center mb-6">
                     <div className="text-primary flex justify-center items-center bg-white/5 p-3 rounded-lg mr-4">
-                      <CircleDollarSign className="h-6 w-6" />
+                      <IndianRupee className="h-6 w-6" />
                     </div>
                     <div className="space-y-0.5">
                       <h3 className="text-xl font-bold text-light mb-0.5">Financial Benefits</h3>
@@ -863,7 +863,7 @@ function Home() {
                                   className="flex items-center gap-4 p-4 rounded-lg bg-dark-900/50 border border-white/5 hover:border-primary/20 transition-all duration-300"
                                 >
                                   <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                                    <CircleDollarSign className="h-6 w-6" />
+                                    <IndianRupee className="h-6 w-6" />
                                   </div>
                                   <div>
                                     <div className="text-base font-medium text-light/90">Price</div>

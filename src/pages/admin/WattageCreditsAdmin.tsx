@@ -14,7 +14,7 @@ import {
   Calendar,
   User,
   Zap,
-  DollarSign,
+  IndianRupee,
   RefreshCw
 } from 'lucide-react';
 
@@ -397,7 +397,7 @@ const WattageCreditsAdmin: React.FC = () => {
                     </th>
                     <th className="px-4 py-3 font-medium">
                       <div className="flex items-center gap-1">
-                        <DollarSign size={16} className="text-primary" />
+                        <IndianRupee size={16} className="text-primary" />
                         Value
                       </div>
                     </th>

@@ -9,7 +9,7 @@ import {
   ChevronDown,
   HomeIcon,
   Zap,
-  CircleDollarSign,
+  IndianRupee,
   Clock,
   CheckCircle2,
   ArrowRight,
@@ -556,7 +556,7 @@ export default function Products() {
                           
                           <div className="flex items-start gap-4">
                             <div className="p-2 bg-primary/10 rounded-lg">
-                              <CircleDollarSign size={24} className="text-primary" />
+                              <IndianRupee size={24} className="text-primary" />
                             </div>
                             <div>
                               <h4 className="font-medium mb-1">₹{products.find(p => p.id === selectedProduct)?.monthly_savings}/mo Savings</h4>
