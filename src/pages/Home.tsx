@@ -922,7 +922,7 @@ function Home() {
                                   <ArrowRight className="h-5 w-5" />
                                 </motion.div>
                               </span>
-                              <span className="absolute inset-0 bg-white/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+
                             </Button>
                           </>
                         ) : (
